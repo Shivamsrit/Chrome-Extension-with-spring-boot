@@ -1,0 +1,15 @@
+# Secrets — never commit these
+.env
+.env.example
+
+# Maven build output
+spring-backend/target/
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+
+# OS junk
+.DS_Store
+Thumbs.db
