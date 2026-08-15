@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Quick Answer",
+  "version": "1.0.0",
+  "description": "Quick Answer Extension",
+  "permissions": ["activeTab", "tabs", "scripting", "storage"],
+  "host_permissions": ["https://quick-answer-backend-1-0-0.onrender.com/*"],
+  "background": {"service_worker": "background.js"},
+  "commands": {
+    "capture-and-answer": {
+      "suggested_key": {"default": "Ctrl+Shift+Y"},
+      "description": "Capture the visible tab and request a concise answer"
+    }
+  },
+  "options_page": "options.html"
+}
