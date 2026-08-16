@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quick Answer Settings</title>
+  <style>
+    body { font: 15px system-ui, sans-serif; max-width: 650px; margin: 48px auto; padding: 0 20px; color: #202124; }
+    input { box-sizing: border-box; width: 100%; padding: 10px; margin: 8px 0 14px; }
+    button { padding: 10px 16px; cursor: pointer; }
+    .hint { color: #555; line-height: 1.5; }
+    #status { margin-left: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Quick Answer Settings</h1>
+  <p class="hint">This settings page is only for configuration. The extension does not open a side panel or a new tab when you use the shortcut.</p>
+  <label for="backend">Backend endpoint</label>
+  <input id="backend" type="url" value="https://quick-answer-backend-1-0-0.onrender.com/api/answer">
+  <button id="save">Save settings</button><span id="status" role="status"></span>
+  <p class="hint">Run the included Spring Boot backend locally and configure your AI API key as an environment variable. Never put a paid API key in extension JavaScript.</p>
+  <script src="options.js"></script>
+</body>
+</html>
