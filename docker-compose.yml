@@ -1,0 +1,31 @@
+services:
+  quick-answer-backend:
+    build:
+      context: ./spring-backend
+      dockerfile: Dockerfile
+    image: quick-answer-backend:local
+    container_name: quick-answer-backend
+    ports:
+      - "8080:8080"
+    # Load all variables from .env into the container.
+    # Copy .env.example → .env and fill in real values before running.
+    # NEVER commit .env — it contains secrets!
+    env_file:
+      - .env
+    environment:
+      # These provide fallback defaults if the variable is absent from .env.
+      # Required — no default; the container will fail to start without it.
+      CODECRAFT_API_KEY: ${CODECRAFT_API_KEY}
+      # Optional overrides
+      CODECRAFT_BASE_URL: ${CODECRAFT_BASE_URL:-https://codecraftapi.com/v1}
+      CODECRAFT_MODEL: ${CODECRAFT_MODEL:-claude-opus-5}
+      # Allow the Chrome extension to call this backend.
+      # Lock to a specific extension ID in production.
+      CORS_ALLOWED_ORIGIN: ${CORS_ALLOWED_ORIGIN:-chrome-extension://*}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/server || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
