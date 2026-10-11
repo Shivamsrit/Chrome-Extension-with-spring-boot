@@ -1,4 +1,4 @@
-package dev.quickanswer;
+package dev.quickanswer.controller;
 
 import java.util.List;
 import java.util.Map;
